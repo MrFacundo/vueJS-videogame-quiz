@@ -2,7 +2,7 @@
 	<div class="questions-container">
 		<b-jumbotron>
 			<template v-slot:lead>
-				{{ currentQuestion.question}}
+				{{ decodeURIComponent(currentQuestion.question) }}
 			</template>
 
 			<hr class="my-4">
@@ -14,7 +14,7 @@
 					@click.prevent="selectAnswer(index)"
 					:class="answerClass(index)"
 					>
-						{{ answer }}
+						{{ decodeURIComponent(answer) }}
 				</b-list-group-item>
 			</b-list-group>
 
@@ -153,7 +153,7 @@
 <style >
 
 	.jumbotron {
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.19);
+		border: 5px solid black;
 	}
 
 </style>

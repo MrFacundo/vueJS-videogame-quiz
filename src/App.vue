@@ -52,11 +52,11 @@ export default {
   },
   methods: {
     next() {
+      this.progress = this.progress + 10;
       if (this.index == 9) {
         this.score_show = true;
       } else {
           this.index++
-          this.progress = this.progress + (this.index + 1 * 10);
       }
     },
     increment(isCorrect) {
@@ -71,10 +71,10 @@ export default {
       this.numTotal = 0;
       this.getQuizQuestions();
       this.score_show = false;
-
+      this.progress= 0
     },
     getQuizQuestions: function() {
-      fetch('https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple', {
+      fetch('https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple&encode=url3986', {
       method: 'get'
     })
       .then((response) => {
@@ -93,7 +93,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-family: 'Press Start 2P', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
