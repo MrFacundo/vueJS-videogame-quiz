@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="questions-container">
 		<b-jumbotron>
 			<template v-slot:lead>
 				{{ currentQuestion.question}}
@@ -18,17 +18,17 @@
 				</b-list-group-item>
 			</b-list-group>
 
+			<div class="box-button">
+				<b-button variant="primary"
+				@click="submitAnswer"
+				:disabled="selectedIndex === null || answered"
+				>Submit</b-button>
 
-			<b-button 
-			variant="primary"
-			@click="submitAnswer"
-			:disabled="selectedIndex === null || answered"
-			>Submit</b-button>
-
-			<b-button @click="next"
-			variant="success"
-			:disabled="answered === false"
-			>Next</b-button>
+				<b-button variant="success"
+				@click="next"
+				:disabled="answered === false"
+				>Next</b-button>
+			</div>
 
 		</b-jumbotron>
 	</div>
@@ -104,13 +104,30 @@
 <style scoped>
 	.list-group {
 		margin-bottom: 15px;
+		border-radius: 15px;
+
+	}
+
+	.list-group-item {
+		margin-top: 15px;
+		border-radius: 15px;
 	}
 
 	.list-group-item:hover {
 		background: #eeeeee;
 		cursor: pointer;
 	}
+	.box-button {
+		display: flex;
+		width: 100%;
+	}
 
+	.box-button button{
+		width: 150px;
+		height: 35px;
+		margin: auto;
+		margin-top: 30px;
+	}
 	.btn {
 		margin: 0 5px;
 	}
@@ -126,4 +143,17 @@
 	.incorrect {
 		background-color: orangered;
 	}
-</style>>
+
+	.questions-container {
+		padding-top: 50px;
+	}
+
+</style>
+
+<style >
+
+	.jumbotron {
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.19);
+	}
+
+</style>
