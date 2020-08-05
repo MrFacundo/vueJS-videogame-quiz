@@ -2,6 +2,7 @@
   <div id="app">
     <Header
       :index="index"
+      :progress="progress"
     />
     <div class="container">
       <Results 
@@ -45,7 +46,8 @@ export default {
       index: 0,
       numCorrect: 0,
       numTotal: 0,
-      score_show: false
+      score_show: false,
+      progress: 0
     }
   },
   methods: {
@@ -54,6 +56,7 @@ export default {
         this.score_show = true;
       } else {
           this.index++
+          this.progress = this.progress + (this.index + 1 * 10);
       }
     },
     increment(isCorrect) {
@@ -71,7 +74,7 @@ export default {
 
     },
     getQuizQuestions: function() {
-      fetch('https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple', {
+      fetch('https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple', {
       method: 'get'
     })
       .then((response) => {
