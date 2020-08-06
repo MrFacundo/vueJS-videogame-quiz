@@ -1,13 +1,13 @@
 <template>
 	<div pb-3>
 		<b-nav tabs>
-				<b-nav-item disabled><b>Videogames quiz</b></b-nav-item>
+				<b-nav-item disabled><img src="../assets/joystick3.png" style="width:50px;height:50px;" alt=""></b-nav-item>
+				<b-nav-item disabled style="color: white"><b>Videogame quiz</b></b-nav-item>
 				<b-nav-item disabled>Question {{ index + 1 }}/10 </b-nav-item>
 		</b-nav >
 		<div class='nav-container'>
 			<div class="step-progress-bar"><div class="step-progress" :style="{'width': progress + '%'}"></div></div>
 		</div >
-
 	</div>
 </template>
 
@@ -22,6 +22,10 @@ export default {
 </script>
 
 <style>
+	.nav-tabs {
+		color: white;
+		background-color: white;
+	}
 	.step-progress-bar {
 		display: flex;
 		margin: 20px;
