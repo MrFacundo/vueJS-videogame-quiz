@@ -3,6 +3,7 @@
         <b-jumbotron>
             <h1>Your score is</h1>
             <h2>{{ numCorrect }}/{{ numTotal }}</h2>
+						<br>
             <b-button variant="primary"
 						@click="nextQuiz">Try again</b-button>
         </b-jumbotron>
