@@ -14,7 +14,7 @@
     </div>
       <b-container class="bv-example-row">
         <b-row >
-          <b-col sm="6" offset="3">
+          <b-col xs="12" md="12" lg="6" offset-lg="3"	>
             <QuestionBox
               v-if="questions.length && !score_show"
               :currentQuestion="questions[index]"
@@ -74,7 +74,7 @@ export default {
       this.progress= 0
     },
     getQuizQuestions: function() {
-      fetch('https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple&encode=url3986', {
+      fetch('https://opentdb.com/api.php?amount=10&category=15&difficulty=easy&type=multiple&encode=url3986', {
       method: 'get'
     })
       .then((response) => {
@@ -99,6 +99,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-image: url('assets/wonder-boy1-large.jpg');
+  background-position: calc(100% - 158px) center;
+
 }
+
 </style>
 

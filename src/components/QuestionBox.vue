@@ -1,5 +1,5 @@
 <template>
-	<div class="questions-container">
+	<div class="col-sm-12">
 		<b-jumbotron>
 			<template v-slot:lead>
 				{{ decodeURIComponent(currentQuestion.question) }}
