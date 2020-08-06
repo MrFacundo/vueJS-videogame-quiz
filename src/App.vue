@@ -1,14 +1,21 @@
 <template>
   <div id="app">
-    <Header 
-      :numCorrect="numCorrect"
-      :numTotal="numTotal"
+    <Header
+      :index="index"
     />
+    <div class="container">
+      <Results 
+        v-if="score_show"
+        :numCorrect="numCorrect"
+        :numTotal="numTotal"
+        :nextQuiz="nextQuiz"
+      /> 
+    </div>
       <b-container class="bv-example-row">
         <b-row >
           <b-col sm="6" offset="3">
             <QuestionBox
-              v-if="questions.length"
+              v-if="questions.length && !score_show"
               :currentQuestion="questions[index]"
               :next="next"
               :increment="increment"
@@ -22,35 +29,49 @@
 <script>
 import QuestionBox from './components/QuestionBox.vue'
 import Header from './components/Header.vue'
+import Results from './components/Results.vue'
 
 
 export default {
   name: 'App',
   components: {
     Header,
-    QuestionBox
+    QuestionBox,
+    Results
   },
   data() {
     return {
       questions: [],
       index: 0,
       numCorrect: 0,
-      numTotal: 0
+      numTotal: 0,
+      score_show: false
     }
   },
   methods: {
     next() {
-      this.index++
+      if (this.index == 9) {
+        this.score_show = true;
+      } else {
+          this.index++
+      }
     },
     increment(isCorrect) {
       if (isCorrect) {
           this.numCorrect++
       }
       this.numTotal++
-    }
-  },
-  mounted: function() {
-    fetch('https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple', {
+    },
+    nextQuiz: function() {
+      this.index = 0;
+      this.numCorrect = 0;
+      this.numTotal = 0;
+      this.getQuizQuestions();
+      this.score_show = false;
+
+    },
+    getQuizQuestions: function() {
+      fetch('https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple', {
       method: 'get'
     })
       .then((response) => {
@@ -59,13 +80,17 @@ export default {
       .then((jsonData) => {
         this.questions = jsonData.results
       })
+    }
+  },
+  mounted: function() {
+    this.getQuizQuestions();
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
