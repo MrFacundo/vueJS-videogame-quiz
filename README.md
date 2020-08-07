@@ -4,6 +4,8 @@ A short project I made to learn the VueJS basics.
 
 This is a simple quiz that asks the user 10 questions, keeps track of the correct answers, the number of questions as well as displaying the quiz results and a progress bar. The quiz questions are provided by opentdb.com's API.
 
+<a href="https://mrfacundo.github.io/vueJS-videogame-quiz/">Live demo</a>
+
 
 ## Project setup
 ```
