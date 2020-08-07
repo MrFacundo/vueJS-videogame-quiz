@@ -1,6 +1,6 @@
-# Vue videogame quiz app
+# Vue JS quiz app
 
-A short project I made to learn the VueJS basics.
+A short project I made to learn VueJS.
 
 This is a simple quiz that asks the user 10 questions, keeps track of the correct answers, the number of questions as well as displaying the quiz results and a progress bar. The quiz questions are provided by opentdb.com's API.
 
